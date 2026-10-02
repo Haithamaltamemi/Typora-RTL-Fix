@@ -1,0 +1,49 @@
+/* 
+ * Typora RTL & Arabic Text Fix (v4 - Zero Interference)
+ * Fixes RTL direction, mixed-language rendering, and code blocks alignment.
+ * Author: Haitham Altamemi
+ */
+
+/* 1. Import Arabic Fonts for better rendering (Optional but recommended) */
+@import url('https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Tajawal:wght@400;500;700&display=swap');
+
+/* 2. Base Direction: The core of the "Zero Interference" approach */
+#write {
+  direction: rtl;
+  font-family: "Tajawal", "Alef", "Open Sans", "Clear Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* 3. Lists: Fix padding for RTL without breaking native BiDi algorithm */
+ul,
+ol {
+  padding-right: 30px;
+  padding-left: 0;
+}
+
+/* 4. Blockquotes: Move border to the right for RTL */
+blockquote {
+  border-right: 4px solid #dfe2e5;
+  border-left: none;
+  padding: 0 15px;
+}
+
+/* 5. Task Lists: Fix checkbox alignment */
+.md-task-list-item > input {
+  margin-right: -1.3em;
+  margin-left: 0;
+}
+
+/* 6. Tables: Force RTL for tables */
+table {
+  direction: rtl;
+}
+
+/* 7. Code Blocks: Force LTR and isolate from surrounding RTL text */
+.md-fences,
+code,
+tt,
+pre {
+  direction: ltr;
+  text-align: left;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
